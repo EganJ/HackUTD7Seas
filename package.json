@@ -1,0 +1,19 @@
+{
+  "name": "hackutd7seas",
+  "version": "1.0.0",
+  "description": "Hackathon submission for HackUTD 2021 Spring",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EganJ/HackUTD7Seas.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EganJ/HackUTD7Seas/issues"
+  },
+  "homepage": "https://github.com/EganJ/HackUTD7Seas#readme"
+}
