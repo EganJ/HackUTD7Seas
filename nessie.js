@@ -16,7 +16,15 @@ module.exports = {
 
     "downloadMerchantData": downloadMerchantData,
     "getMerchantList": getMerchantList,
-    "getMerchantData": getMerchantData
+    "getMerchantData": getMerchantData,
+
+    "downloadAccountData": downloadAccountData,
+    "getAccountList": getAccountList,
+    "getAccountData": getAccountData,
+
+    "downloadBillData": downloadBillData,
+    "getBillList": getBillList,
+    "getBillData": getBillData,
 }
 
 /** 
@@ -51,6 +59,11 @@ function _fetchToObject(urlpath) {
     });
 }
 
+/** Requests all customer data from the Nessie API and pipes it to a file
+ */
+function downloadCustomerData() {
+    return _pipeToFile(`http://api.nessieisreal.com/enterprise/customers?key=${KEY}`, "./save/customerData.json");
+}
 
 /** Returns a list of customer data objects
  * 
@@ -68,11 +81,6 @@ async function getCustomerList() {
     return JSON.parse(fs.readFileSync("./save/customerData.json")).results;
 }
 
-/** Requests all customer data from the Nessie API and pipes it to a file
- */
-function downloadCustomerData() {
-    return _pipeToFile(`http://api.nessieisreal.com/enterprise/customers?key=${KEY}`, "./save/customerData.json");
-}
 
 /** Returns a list of customer data objects
  * 
@@ -126,4 +134,99 @@ async function getMerchantList() {
  */
 function getMerchantData(merchantID) {
     return _fetchToObject(`http://api.nessieisreal.com/enterprise/merchants/${merchantID}?key=${KEY}`);
+}
+
+/** Requests all customer data from the Nessie API and pipes it to a file
+ */
+function downloadAccountData() {
+    return _pipeToFile(`http://api.nessieisreal.com/enterprise/accounts?key=${KEY}`, "./save/accountData.json");
+}
+
+/** Returns a list of account data objects
+ * 
+ * Since the number of accounts is potentially to large to reasonably fetch every time, this
+ * will, if possible, fetch from a saved request on disk; to update the request on disk, call
+ * downloadAccountData();
+ * 
+ * @returns an array of account data objects
+ * 
+ */
+async function getAccountList() {
+    if (!fs.existsSync("./save/accountData.json")) {
+        await downloadAccountData();
+    }
+    return JSON.parse(fs.readFileSync("./save/accountData.json")).results;
+}
+
+
+/** Returns a list of account data objects
+ * 
+ * Since the number of accounts is potentially to large to reasonably fetch every time, this
+ * will, if possible, fetch from a saved request on disk; to update the request on disk, call
+ * downloadAccountData();
+ * 
+ * @returns an array of account data objects
+ * 
+ */
+async function getAccountList() {
+    if (!fs.existsSync("./save/accountData.json")) {
+        await downloadAccountData();
+    }
+    return JSON.parse(fs.readFileSync("./save/accountData.json")).results;
+}
+
+/** Returns the data for a single account, fetched by ID
+ * 
+ * @param {String} accountID 
+ */
+function getAccountData(accountID) {
+    return _fetchToObject(`http://api.nessieisreal.com/enterprise/accounts/${accountID}?key=${KEY}`);
+}
+
+
+/** Requests all customer data from the Nessie API and pipes it to a file
+ */
+function downloadBillData() {
+    return _pipeToFile(`http://api.nessieisreal.com/enterprise/bills?key=${KEY}`, "./save/billData.json");
+}
+
+/** Returns a list of bill data objects
+ * 
+ * Since the number of bills is potentially to large to reasonably fetch every time, this
+ * will, if possible, fetch from a saved request on disk; to update the request on disk, call
+ * downloadBillData();
+ * 
+ * @returns an array of bill data objects
+ * 
+ */
+async function getBillList() {
+    if (!fs.existsSync("./save/billData.json")) {
+        await downloadBillData();
+    }
+    return JSON.parse(fs.readFileSync("./save/billData.json")).results;
+}
+
+
+/** Returns a list of bill data objects
+ * 
+ * Since the number of bills is potentially to large to reasonably fetch every time, this
+ * will, if possible, fetch from a saved request on disk; to update the request on disk, call
+ * downloadBillData();
+ * 
+ * @returns an array of bill data objects
+ * 
+ */
+async function getBillList() {
+    if (!fs.existsSync("./save/billData.json")) {
+        await downloadBillData();
+    }
+    return JSON.parse(fs.readFileSync("./save/billData.json")).results;
+}
+
+/** Returns the data for a single bill, fetched by ID
+ * 
+ * @param {String} billID 
+ */
+function getBillData(billID) {
+    return _fetchToObject(`http://api.nessieisreal.com/enterprise/bills/${billID}?key=${KEY}`);
 }

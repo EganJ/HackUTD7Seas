@@ -1,2 +1,3 @@
 # HackUTD7Seas
-Repository for my spring 2021 HackUTD submission
+
+It's important for consumers to check their spending habits on a regular basis! This is for a variety of reasons. When checked regularity, fraudulent charges and identity theft can be detected and combatted much more quickly. It also helps consumers reflect on their spending: most Americans aren't saving nearly as much as they should be, and an important way to increase savings is to reflect on and reduce unnecessary expenditures. This is the inspiration for this hackathon project: an application that, using Capitol One's example hackathon database, prompts users to authenticate and reflect on their purchases, and provides analysis on their spending.
