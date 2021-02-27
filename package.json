@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/EganJ/HackUTD7Seas/issues"
   },
-  "homepage": "https://github.com/EganJ/HackUTD7Seas#readme"
+  "homepage": "https://github.com/EganJ/HackUTD7Seas#readme",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "http": "0.0.1-security",
+    "https": "^1.0.0"
+  }
 }
