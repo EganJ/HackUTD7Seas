@@ -72,8 +72,7 @@
                 if (necessaryVal > 0) {
                     dataList.push(necessaryVal);
                     labelList.push("Necessary Expense: " + cat);
-
-                    let rgb = HSVtoRGB((15 * i) / 360, 0.6, 1);
+                    let rgb = HSVtoRGB(((200 + 15 * i) / 360) % 1, 0.6, 1);
                     colorList.push(`rgb(${rgb.r},${rgb.g},${rgb.b})`);
                     i++;
 
@@ -85,7 +84,7 @@
                 if (unknownVal > 0) {
                     dataList.push(unknownVal);
                     labelList.push("Unknown Expense: " + cat);
-                    let rgb = HSVtoRGB(((200 + 15 * i) / 360) % 1, 0.6, 1);
+                    let rgb = HSVtoRGB(0, 0, 0.8 - 0.1 * i);
                     colorList.push(`rgb(${rgb.r},${rgb.g},${rgb.b})`);
                     i++;
                 }
@@ -96,7 +95,7 @@
                 if (unnecessaryVal > 0) {
                     dataList.push(unnecessaryVal);
                     labelList.push("Unnecessary Expense: " + cat);
-                    let rgb = HSVtoRGB(0, 0, 0.8 - 0.1 * i);
+                    let rgb = HSVtoRGB((15 * i) / 360, 0.6, 1);
                     colorList.push(`rgb(${rgb.r},${rgb.g},${rgb.b})`);
                     i++;
                 }
