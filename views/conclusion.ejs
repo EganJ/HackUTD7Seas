@@ -21,60 +21,100 @@
 
         <canvas id="myChart" width="400" height="400" style="max-width: 50vw;"></canvas>
         <script>
-            const categoryNames = [
-                "--",
-                "Housing and Transportation",
-                "Education or Professional",
-                "Food",
-                "Medical and Insurance",
-                "Entertainment",
-                "Investment and Debt Repayment",
-                "Household and Necessities"
-            ];
 
-            var dataList = [];
-            var labelList = [];
-            var colorList = [];
-
-            var spending = <%- JSON.stringify(categorySpending) %>;
-
-            for (cat of categoryNames) {
-                necessaryVal = spending["true"][cat];
-                if (necessaryVal > 0) {
-                    dataList.push(necessaryVal);
-                    labelList.push("Necessary Expense: " + cat);
+            function HSVtoRGB(h, s, v) {
+                // https://stackoverflow.com/a/17243070/10717280
+                var r, g, b, i, f, p, q, t;
+                if (arguments.length === 1) {
+                    s = h.s, v = h.v, h = h.h;
                 }
-            }
-            for (cat of categoryNames) {
-                unknownVal = spending["unknown"][cat];
-                if (unknownVal > 0) {
-                    dataList.push(unknownVal);
-                    labelList.push("Unknown Expense: " + cat);
+                i = Math.floor(h * 6);
+                f = h * 6 - i;
+                p = v * (1 - s);
+                q = v * (1 - f * s);
+                t = v * (1 - (1 - f) * s);
+                switch (i % 6) {
+                    case 0: r = v, g = t, b = p; break;
+                    case 1: r = q, g = v, b = p; break;
+                    case 2: r = p, g = v, b = t; break;
+                    case 3: r = p, g = q, b = v; break;
+                    case 4: r = t, g = p, b = v; break;
+                    case 5: r = v, g = p, b = q; break;
                 }
-            }
-            for (cat of categoryNames) {
-                unnecessaryVal = spending["false"][cat];
-                if (unnecessaryVal > 0) {
-                    dataList.push(unnecessaryVal);
-                    labelList.push("Unnecessary Expense: " + cat);
-                }
+                return {
+                    r: Math.round(r * 255),
+                    g: Math.round(g * 255),
+                    b: Math.round(b * 255)
+                };
             }
 
+                const categoryNames = [
+                    "--",
+                    "Housing and Transportation",
+                    "Education or Professional",
+                    "Food",
+                    "Medical and Insurance",
+                    "Entertainment",
+                    "Investment and Debt Repayment",
+                    "Household and Necessities"
+                ];
 
-            var ctx = document.getElementById('myChart').getContext('2d');
-            var options = {
-                type: "doughnut",
-                data: {
-                    datasets: [{
-                        label:"Expenditures",
-                        data: dataList
-                    }],
+                var dataList = [];
+                var labelList = [];
 
-                    labels: labelList
+                var spending = <%- JSON.stringify(categorySpending) %>;
+
+                var i = 0;
+
+                for (cat of categoryNames) {
+                    necessaryVal = spending["true"][cat];
+                    if (necessaryVal > 0) {
+                        dataList.push(necessaryVal);
+                        labelList.push("Necessary Expense: " + cat);
+
+                        let rgb = HSVtoRGB((15 * i)/360, 0.6, 1);
+                        colorList.push(`rgba(${rgb.r},${rgb.g},${rgb.b},1)`);
+                        i++;
+
+                    }
                 }
-            };
-            console.log(options);
-            var myChart = new Chart(ctx, options);
+                i = 0;
+                for (cat of categoryNames) {
+                    unknownVal = spending["unknown"][cat];
+                    if (unknownVal > 0) {
+                        dataList.push(unknownVal);
+                        labelList.push("Unknown Expense: " + cat);
+                        let rgb = HSVtoRGB(((200 + 15 * i)/360)%1, 0.6, 1);
+                        colorList.push(`rgba(${rgb.r},${rgb.g},${rgb.b},1)`);
+                        i++;
+                    }
+                }
+                i = 0;
+                for (cat of categoryNames) {
+                    unnecessaryVal = spending["false"][cat];
+                    if (unnecessaryVal > 0) {
+                        dataList.push(unnecessaryVal);
+                        labelList.push("Unnecessary Expense: " + cat);
+                        let rgb = HSVtoRGB(0, 0, 0.8 - 0.1 * i);
+                        colorList.push(`rgba(${rgb.r},${rgb.g},${rgb.b},1)`);
+                        i++;
+                    }
+                }
+
+
+                var ctx = document.getElementById('myChart').getContext('2d');
+                var options = {
+                    type: "doughnut",
+                    data: {
+                        datasets: [{
+                            label: "Expenditures",
+                            data: dataList
+                        }],
+                        "labels": labelList
+                    }
+                };
+                console.log(options);
+                var myChart = new Chart(ctx, options);
         </script>
         <% for(piece of advice) { %>
         <div class="alert alert-info" role="alert">
