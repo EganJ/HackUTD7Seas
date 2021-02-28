@@ -9,8 +9,13 @@ module.exports = {
     addBill,
     addAccount,
     addCustomer,
-
-    "printall": () => { console.log(customers); console.log(accounts); console.log(bills); }
+    getBill,
+    getAccount,
+    getCustomer,
+    billIDGenerator,
+    accountIDGenerator,
+    customerIDGenerator,
+    
 };
 
 const customers = {};
@@ -49,7 +54,7 @@ function _addBillToAccount(accountID, billID) {
     _touchAccountEntry(accountID);
     accounts[accountID].billIDs.add(billID);
     if (accounts[accountID].customerID) {
-        _addBillToCustomer(customerID, billID);
+        _addBillToCustomer(accounts[accountID].customerID, billID);
     }
 
 }
@@ -96,4 +101,58 @@ function addAccount(account) {
  */
 function addCustomer(customer) {
     _touchCustomerEntry(customer._id);
+}
+
+function getCustomer(customerID) {
+    return customers[customerID];
+}
+
+function getAccount(accountID) {
+    return accounts[accountID];
+}
+
+function getBill(billID) {
+    return bills[billID];
+}
+
+/**
+ * Iterates through every customer id, starting at a random location
+ */
+function* customerIDGenerator() {
+    // random selection code taken from https://stackoverflow.com/a/15106541/10717280 
+    let keys = Object.keys(customers);
+    let startind = keys.length * Math.random() << 0;
+    let ind = startind;
+    do {
+        yield keys[ind];
+        ind = (ind+1)%keys.length;
+    } while (ind != startind);
+}
+
+/**
+ * Iterates through every account id, starting at a random location
+ */
+function* accountIDGenerator() {
+    // random selection code taken from https://stackoverflow.com/a/15106541/10717280 
+    let keys = Object.keys(accounts);
+    let startind = keys.length * Math.random() << 0;
+    let ind = startind;
+    do {
+        yield keys[ind];
+        ind = (ind+1)%keys.length;
+    } while (ind != startind);
+}
+
+/**
+ * Iterates through every bill id, starting at a random location
+ */
+function* billIDGenerator() {
+    // random selection code taken from https://stackoverflow.com/a/15106541/10717280 
+    let keys = Object.keys(bills);
+    let startind = keys.length * Math.random() << 0;
+    let ind = startind;
+    do {
+        yield keys[ind];
+        ind = (ind+1)%keys.length;
+    } while (ind != startind);
 }
