@@ -1,0 +1,147 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Personal Expense analysis</title>
+    <meta name="description" content="HackUTD VII Seas submission">
+    <meta name="author" content="Egan Johnson">
+
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+</head>
+
+<body>
+    <div class="container container-md">
+
+        <canvas id="myChart" width="400" height="400" style="max-width: 50vw;"></canvas>
+        <script>
+
+            function HSVtoRGB(h, s, v) {
+                // https://stackoverflow.com/a/17243070/10717280
+                var r, g, b, i, f, p, q, t;
+                if (arguments.length === 1) {
+                    s = h.s, v = h.v, h = h.h;
+                }
+                i = Math.floor(h * 6);
+                f = h * 6 - i;
+                p = v * (1 - s);
+                q = v * (1 - f * s);
+                t = v * (1 - (1 - f) * s);
+                switch (i % 6) {
+                    case 0: r = v, g = t, b = p; break;
+                    case 1: r = q, g = v, b = p; break;
+                    case 2: r = p, g = v, b = t; break;
+                    case 3: r = p, g = q, b = v; break;
+                    case 4: r = t, g = p, b = v; break;
+                    case 5: r = v, g = p, b = q; break;
+                }
+                return {
+                    r: Math.round(r * 255),
+                    g: Math.round(g * 255),
+                    b: Math.round(b * 255)
+                };
+            }
+
+            const categoryNames = [
+                "--",
+                "Housing and Transportation",
+                "Education or Professional",
+                "Food",
+                "Medical and Insurance",
+                "Entertainment",
+                "Investment and Debt Repayment",
+                "Household and Necessities"
+            ];
+
+            var dataList = [];
+            var labelList = [];
+            var colorList = [];
+
+            var spending = { "true": { "--": 0, "Housing and Transportation": 0, "Education or Professional": 20, "Food": 282, "Medical and Insurance": 21, "Entertainment": 0, "Investment and Debt Repayment": 386, "Household and Necessities": 321 }, "false": { "--": 0, "Housing and Transportation": 0, "Education or Professional": 0, "Food": 326, "Medical and Insurance": 0, "Entertainment": 547, "Investment and Debt Repayment": 0, "Household and Necessities": 0 }, "unknown": { "--": 0, "Housing and Transportation": 0, "Education or Professional": 0, "Food": 0, "Medical and Insurance": 0, "Entertainment": 0, "Investment and Debt Repayment": 0, "Household and Necessities": 0 }, "all": { "--": 0, "Housing and Transportation": 0, "Education or Professional": 20, "Food": 608, "Medical and Insurance": 21, "Entertainment": 547, "Investment and Debt Repayment": 386, "Household and Necessities": 321 } };
+
+            var i = 0;
+
+            for (cat of categoryNames) {
+                necessaryVal = spending["true"][cat];
+                if (necessaryVal > 0) {
+                    dataList.push(necessaryVal);
+                    labelList.push("Necessary Expense: " + cat);
+                    let rgb = HSVtoRGB(((200 + 15 * i) / 360) % 1, 0.6, 1);
+                    colorList.push(`rgb(${rgb.r},${rgb.g},${rgb.b})`);
+                    i++;
+
+                }
+            }
+            i = 0;
+            for (cat of categoryNames) {
+                unknownVal = spending["unknown"][cat];
+                if (unknownVal > 0) {
+                    dataList.push(unknownVal);
+                    labelList.push("Unknown Expense: " + cat);
+                    let rgb = HSVtoRGB(0, 0, 0.8 - 0.1 * i);
+                    colorList.push(`rgb(${rgb.r},${rgb.g},${rgb.b})`);
+                    i++;
+                }
+            }
+            i = 0;
+            for (cat of categoryNames) {
+                unnecessaryVal = spending["false"][cat];
+                if (unnecessaryVal > 0) {
+                    dataList.push(unnecessaryVal);
+                    labelList.push("Unnecessary Expense: " + cat);
+                    let rgb = HSVtoRGB((15 * i) / 360, 0.6, 1);
+                    colorList.push(`rgb(${rgb.r},${rgb.g},${rgb.b})`);
+                    i++;
+                }
+            }
+
+
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var options = {
+                type: "doughnut",
+                data: {
+                    datasets: [{
+                        label: "Expenditures",
+                        data: dataList,
+                        backgroundColor: colorList
+                    }],
+                    "labels": labelList
+                }
+            };
+            console.log(options);
+            var myChart = new Chart(ctx, options);
+        </script>
+
+        <div class="alert alert-info" role="alert">
+            <p>If these expenses represent a typical month, you might want to add to your emergency savings: most
+                experts recommend having at least 3 months living expenses. If you can, try to save up for six!</p>
+        </div>
+
+        <div class="alert alert-info" role="alert">
+            <p>It looks like you are spending a lot of your income on unnecessary expenses! Try to keep these below 30%
+                of your income at most. It looks like you are spending more than you need to on Food and Entertainment
+            </p>
+        </div>
+
+    </div>
+
+</body>
+<!-- Bootstrap JavaScript Bundle with Popper -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+</html>
+<!DOCTYPE html>

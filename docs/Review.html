@@ -1,0 +1,873 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Personal Expense analysis</title>
+    <meta name="description" content="HackUTD VII Seas submission">
+    <meta name="author" content="Egan Johnson">
+
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="container container-md">
+        <form action="/conclusion/" method="GET">
+
+            <input type="hidden" name="numberOfBills" value="11">
+
+            <div class="accordion" id="inputAccordion">
+                <div class="card">
+                    <div class="card-header" id="collapseHeaderSavings">
+                        <h1 class="mb-0">
+                            <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                data-target="#collapseBodySavings" aria-expanded="true"
+                                aria-controls="collapseBodySavings">
+                                Total Savings
+                            </button>
+                        </h1>
+                    </div>
+                    <div id="collapseBodySavings" class="collapse show" aria-labelledby="collapseHeaderSavings"
+                        data-parent="#inputAccordion">
+                        <div class="card-body">
+                            <div class="row align-items-end">
+                                <div class="col-6">
+                                    <p>We've got some idea of what you've saved so far, but please check this number if
+                                        you have any extra cash squirreled away out of sight.</p>
+                                    $<input type="number" step="0.01" value="1278.8" name="totalSaved">
+                                </div>
+                                <div class="col">
+                                    <button
+                                        onclick="document.getElementById('collapseBodySavings').scrollIntoView(true);"
+                                        class="btn btn-primary" data-toggle="collapse" data-target="#collapseBodyBill1"
+                                        aria-expanded="true" type="button" style="float:right">
+                                        Looks good
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="card" id="accordionCard1">
+                    <div class="card-header" id="collapseHeaderBill1">
+                        <h1 class="mb-0">
+                            <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                data-target="#collapseBodyBill1" aria-expanded="true" aria-controls="collapseBodyBill1">
+                                Expense paid to: Miscellaneous
+                            </button>
+                        </h1>
+                    </div>
+                    <div id="collapseBodyBill1" class="collapse hidden" aria-labelledby="collapseHeaderBill1"
+                        data-parent="#inputAccordion">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <p>Payment amount: </p>
+                                    <p>$274</p>
+                                </div>
+                                <div class="col">
+                                    <p>Date:</p>
+                                    <p>2013-05-10</p>
+                                </div>
+                                <div class="col">
+                                    <p>Was this expense necessary?</p>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" value="true" name="isNecessary1"
+                                            id="necessaryTrue1">
+                                        <label class="form-check-label" for="necessaryTrue1">Yes</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" value="false" name="isNecessary1"
+                                            id="necessaryFalse1">
+                                        <label class="form-check-label for=" necessaryFalse1">No</input>
+                                    </div>
+                                    <input style="visibility: hidden;" type="radio" value="unknown" name="isNecessary1"
+                                        checked>
+                                </div>
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label for="category1">What category is this expense?</label>
+                                        <select class="form-control" id="category1" name="category1">
+                                            <option>--</option>
+                                            <option>Housing and Transportation</option>
+                                            <option>Education or Professional</option>
+                                            <option>Food</option>
+                                            <option>Medical and Insurance</option>
+                                            <option>Entertainment</option>
+                                            <option>Investment and Debt Repayment</option>
+                                            <option>Household and Necessities</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-end">
+                                <div class="col"> <a
+                                        href="https://www.capitalone.com/support-center/credit-cards/report-fraud">I
+                                        don't recognize this payment.</a>
+                                </div>
+
+                                <div class="col">
+                                    <button onclick="document.getElementById('collapseBodyBill1').scrollIntoView(true);"
+                                        class="btn btn-primary" data-toggle="collapse" data-target="#collapseBodyBill2"
+                                        aria-expanded="true" type="button" style="float:right">
+                                        Looks good
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="amount1" value="274">
+
+                <div class="card" id="accordionCard2">
+                    <div class="card-header" id="collapseHeaderBill2">
+                        <h1 class="mb-0">
+                            <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                data-target="#collapseBodyBill2" aria-expanded="true" aria-controls="collapseBodyBill2">
+                                Expense paid to: Comcast
+                            </button>
+                        </h1>
+                    </div>
+                    <div id="collapseBodyBill2" class="collapse hidden" aria-labelledby="collapseHeaderBill2"
+                        data-parent="#inputAccordion">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <p>Payment amount: </p>
+                                    <p>$524</p>
+                                </div>
+                                <div class="col">
+                                    <p>Date:</p>
+                                    <p>2015-09-10</p>
+                                </div>
+                                <div class="col">
+                                    <p>Was this expense necessary?</p>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" value="true" name="isNecessary2"
+                                            id="necessaryTrue2">
+                                        <label class="form-check-label" for="necessaryTrue2">Yes</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" value="false" name="isNecessary2"
+                                            id="necessaryFalse2">
+                                        <label class="form-check-label for=" necessaryFalse2">No</input>
+                                    </div>
+                                    <input style="visibility: hidden;" type="radio" value="unknown" name="isNecessary2"
+                                        checked>
+                                </div>
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label for="category2">What category is this expense?</label>
+                                        <select class="form-control" id="category2" name="category2">
+                                            <option>--</option>
+                                            <option>Housing and Transportation</option>
+                                            <option>Education or Professional</option>
+                                            <option>Food</option>
+                                            <option>Medical and Insurance</option>
+                                            <option>Entertainment</option>
+                                            <option>Investment and Debt Repayment</option>
+                                            <option>Household and Necessities</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-end">
+                                <div class="col"> <a
+                                        href="https://www.capitalone.com/support-center/credit-cards/report-fraud">I
+                                        don't recognize this payment.</a>
+                                </div>
+
+                                <div class="col">
+                                    <button onclick="document.getElementById('collapseBodyBill2').scrollIntoView(true);"
+                                        class="btn btn-primary" data-toggle="collapse" data-target="#collapseBodyBill3"
+                                        aria-expanded="true" type="button" style="float:right">
+                                        Looks good
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="amount2" value="524">
+
+                <div class="card" id="accordionCard3">
+                    <div class="card-header" id="collapseHeaderBill3">
+                        <h1 class="mb-0">
+                            <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                data-target="#collapseBodyBill3" aria-expanded="true" aria-controls="collapseBodyBill3">
+                                Expense paid to: Miscellaneous
+                            </button>
+                        </h1>
+                    </div>
+                    <div id="collapseBodyBill3" class="collapse hidden" aria-labelledby="collapseHeaderBill3"
+                        data-parent="#inputAccordion">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <p>Payment amount: </p>
+                                    <p>$574</p>
+                                </div>
+                                <div class="col">
+                                    <p>Date:</p>
+                                    <p>2013-08-31</p>
+                                </div>
+                                <div class="col">
+                                    <p>Was this expense necessary?</p>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" value="true" name="isNecessary3"
+                                            id="necessaryTrue3">
+                                        <label class="form-check-label" for="necessaryTrue3">Yes</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" value="false" name="isNecessary3"
+                                            id="necessaryFalse3">
+                                        <label class="form-check-label for=" necessaryFalse3">No</input>
+                                    </div>
+                                    <input style="visibility: hidden;" type="radio" value="unknown" name="isNecessary3"
+                                        checked>
+                                </div>
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label for="category3">What category is this expense?</label>
+                                        <select class="form-control" id="category3" name="category3">
+                                            <option>--</option>
+                                            <option>Housing and Transportation</option>
+                                            <option>Education or Professional</option>
+                                            <option>Food</option>
+                                            <option>Medical and Insurance</option>
+                                            <option>Entertainment</option>
+                                            <option>Investment and Debt Repayment</option>
+                                            <option>Household and Necessities</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-end">
+                                <div class="col"> <a
+                                        href="https://www.capitalone.com/support-center/credit-cards/report-fraud">I
+                                        don't recognize this payment.</a>
+                                </div>
+
+                                <div class="col">
+                                    <button onclick="document.getElementById('collapseBodyBill3').scrollIntoView(true);"
+                                        class="btn btn-primary" data-toggle="collapse" data-target="#collapseBodyBill4"
+                                        aria-expanded="true" type="button" style="float:right">
+                                        Looks good
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="amount3" value="574">
+
+                <div class="card" id="accordionCard4">
+                    <div class="card-header" id="collapseHeaderBill4">
+                        <h1 class="mb-0">
+                            <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                data-target="#collapseBodyBill4" aria-expanded="true" aria-controls="collapseBodyBill4">
+                                Expense paid to: Verizon Wireless
+                            </button>
+                        </h1>
+                    </div>
+                    <div id="collapseBodyBill4" class="collapse hidden" aria-labelledby="collapseHeaderBill4"
+                        data-parent="#inputAccordion">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <p>Payment amount: </p>
+                                    <p>$73</p>
+                                </div>
+                                <div class="col">
+                                    <p>Date:</p>
+                                    <p>2016-05-09</p>
+                                </div>
+                                <div class="col">
+                                    <p>Was this expense necessary?</p>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" value="true" name="isNecessary4"
+                                            id="necessaryTrue4">
+                                        <label class="form-check-label" for="necessaryTrue4">Yes</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" value="false" name="isNecessary4"
+                                            id="necessaryFalse4">
+                                        <label class="form-check-label for=" necessaryFalse4">No</input>
+                                    </div>
+                                    <input style="visibility: hidden;" type="radio" value="unknown" name="isNecessary4"
+                                        checked>
+                                </div>
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label for="category4">What category is this expense?</label>
+                                        <select class="form-control" id="category4" name="category4">
+                                            <option>--</option>
+                                            <option>Housing and Transportation</option>
+                                            <option>Education or Professional</option>
+                                            <option>Food</option>
+                                            <option>Medical and Insurance</option>
+                                            <option>Entertainment</option>
+                                            <option>Investment and Debt Repayment</option>
+                                            <option>Household and Necessities</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-end">
+                                <div class="col"> <a
+                                        href="https://www.capitalone.com/support-center/credit-cards/report-fraud">I
+                                        don't recognize this payment.</a>
+                                </div>
+
+                                <div class="col">
+                                    <button onclick="document.getElementById('collapseBodyBill4').scrollIntoView(true);"
+                                        class="btn btn-primary" data-toggle="collapse" data-target="#collapseBodyBill5"
+                                        aria-expanded="true" type="button" style="float:right">
+                                        Looks good
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="amount4" value="73">
+
+                <div class="card" id="accordionCard5">
+                    <div class="card-header" id="collapseHeaderBill5">
+                        <h1 class="mb-0">
+                            <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                data-target="#collapseBodyBill5" aria-expanded="true" aria-controls="collapseBodyBill5">
+                                Expense paid to: Comcast
+                            </button>
+                        </h1>
+                    </div>
+                    <div id="collapseBodyBill5" class="collapse hidden" aria-labelledby="collapseHeaderBill5"
+                        data-parent="#inputAccordion">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <p>Payment amount: </p>
+                                    <p>$20</p>
+                                </div>
+                                <div class="col">
+                                    <p>Date:</p>
+                                    <p>2011-02-20</p>
+                                </div>
+                                <div class="col">
+                                    <p>Was this expense necessary?</p>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" value="true" name="isNecessary5"
+                                            id="necessaryTrue5">
+                                        <label class="form-check-label" for="necessaryTrue5">Yes</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" value="false" name="isNecessary5"
+                                            id="necessaryFalse5">
+                                        <label class="form-check-label for=" necessaryFalse5">No</input>
+                                    </div>
+                                    <input style="visibility: hidden;" type="radio" value="unknown" name="isNecessary5"
+                                        checked>
+                                </div>
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label for="category5">What category is this expense?</label>
+                                        <select class="form-control" id="category5" name="category5">
+                                            <option>--</option>
+                                            <option>Housing and Transportation</option>
+                                            <option>Education or Professional</option>
+                                            <option>Food</option>
+                                            <option>Medical and Insurance</option>
+                                            <option>Entertainment</option>
+                                            <option>Investment and Debt Repayment</option>
+                                            <option>Household and Necessities</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-end">
+                                <div class="col"> <a
+                                        href="https://www.capitalone.com/support-center/credit-cards/report-fraud">I
+                                        don't recognize this payment.</a>
+                                </div>
+
+                                <div class="col">
+                                    <button onclick="document.getElementById('collapseBodyBill5').scrollIntoView(true);"
+                                        class="btn btn-primary" data-toggle="collapse" data-target="#collapseBodyBill6"
+                                        aria-expanded="true" type="button" style="float:right">
+                                        Looks good
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="amount5" value="20">
+
+                <div class="card" id="accordionCard6">
+                    <div class="card-header" id="collapseHeaderBill6">
+                        <h1 class="mb-0">
+                            <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                data-target="#collapseBodyBill6" aria-expanded="true" aria-controls="collapseBodyBill6">
+                                Expense paid to: Credit Card
+                            </button>
+                        </h1>
+                    </div>
+                    <div id="collapseBodyBill6" class="collapse hidden" aria-labelledby="collapseHeaderBill6"
+                        data-parent="#inputAccordion">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <p>Payment amount: </p>
+                                    <p>$14</p>
+                                </div>
+                                <div class="col">
+                                    <p>Date:</p>
+                                    <p>2015-06-27</p>
+                                </div>
+                                <div class="col">
+                                    <p>Was this expense necessary?</p>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" value="true" name="isNecessary6"
+                                            id="necessaryTrue6">
+                                        <label class="form-check-label" for="necessaryTrue6">Yes</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" value="false" name="isNecessary6"
+                                            id="necessaryFalse6">
+                                        <label class="form-check-label for=" necessaryFalse6">No</input>
+                                    </div>
+                                    <input style="visibility: hidden;" type="radio" value="unknown" name="isNecessary6"
+                                        checked>
+                                </div>
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label for="category6">What category is this expense?</label>
+                                        <select class="form-control" id="category6" name="category6">
+                                            <option>--</option>
+                                            <option>Housing and Transportation</option>
+                                            <option>Education or Professional</option>
+                                            <option>Food</option>
+                                            <option>Medical and Insurance</option>
+                                            <option>Entertainment</option>
+                                            <option>Investment and Debt Repayment</option>
+                                            <option>Household and Necessities</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-end">
+                                <div class="col"> <a
+                                        href="https://www.capitalone.com/support-center/credit-cards/report-fraud">I
+                                        don't recognize this payment.</a>
+                                </div>
+
+                                <div class="col">
+                                    <button onclick="document.getElementById('collapseBodyBill6').scrollIntoView(true);"
+                                        class="btn btn-primary" data-toggle="collapse" data-target="#collapseBodyBill7"
+                                        aria-expanded="true" type="button" style="float:right">
+                                        Looks good
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="amount6" value="14">
+
+                <div class="card" id="accordionCard7">
+                    <div class="card-header" id="collapseHeaderBill7">
+                        <h1 class="mb-0">
+                            <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                data-target="#collapseBodyBill7" aria-expanded="true" aria-controls="collapseBodyBill7">
+                                Expense paid to: Verizon Wireless
+                            </button>
+                        </h1>
+                    </div>
+                    <div id="collapseBodyBill7" class="collapse hidden" aria-labelledby="collapseHeaderBill7"
+                        data-parent="#inputAccordion">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <p>Payment amount: </p>
+                                    <p>$502</p>
+                                </div>
+                                <div class="col">
+                                    <p>Date:</p>
+                                    <p>1998-05-10</p>
+                                </div>
+                                <div class="col">
+                                    <p>Was this expense necessary?</p>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" value="true" name="isNecessary7"
+                                            id="necessaryTrue7">
+                                        <label class="form-check-label" for="necessaryTrue7">Yes</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" value="false" name="isNecessary7"
+                                            id="necessaryFalse7">
+                                        <label class="form-check-label for=" necessaryFalse7">No</input>
+                                    </div>
+                                    <input style="visibility: hidden;" type="radio" value="unknown" name="isNecessary7"
+                                        checked>
+                                </div>
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label for="category7">What category is this expense?</label>
+                                        <select class="form-control" id="category7" name="category7">
+                                            <option>--</option>
+                                            <option>Housing and Transportation</option>
+                                            <option>Education or Professional</option>
+                                            <option>Food</option>
+                                            <option>Medical and Insurance</option>
+                                            <option>Entertainment</option>
+                                            <option>Investment and Debt Repayment</option>
+                                            <option>Household and Necessities</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-end">
+                                <div class="col"> <a
+                                        href="https://www.capitalone.com/support-center/credit-cards/report-fraud">I
+                                        don't recognize this payment.</a>
+                                </div>
+
+                                <div class="col">
+                                    <button onclick="document.getElementById('collapseBodyBill7').scrollIntoView(true);"
+                                        class="btn btn-primary" data-toggle="collapse" data-target="#collapseBodyBill8"
+                                        aria-expanded="true" type="button" style="float:right">
+                                        Looks good
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="amount7" value="502">
+
+                <div class="card" id="accordionCard8">
+                    <div class="card-header" id="collapseHeaderBill8">
+                        <h1 class="mb-0">
+                            <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                data-target="#collapseBodyBill8" aria-expanded="true" aria-controls="collapseBodyBill8">
+                                Expense paid to: Cable
+                            </button>
+                        </h1>
+                    </div>
+                    <div id="collapseBodyBill8" class="collapse hidden" aria-labelledby="collapseHeaderBill8"
+                        data-parent="#inputAccordion">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <p>Payment amount: </p>
+                                    <p>$345</p>
+                                </div>
+                                <div class="col">
+                                    <p>Date:</p>
+                                    <p>2016-03-14</p>
+                                </div>
+                                <div class="col">
+                                    <p>Was this expense necessary?</p>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" value="true" name="isNecessary8"
+                                            id="necessaryTrue8">
+                                        <label class="form-check-label" for="necessaryTrue8">Yes</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" value="false" name="isNecessary8"
+                                            id="necessaryFalse8">
+                                        <label class="form-check-label for=" necessaryFalse8">No</input>
+                                    </div>
+                                    <input style="visibility: hidden;" type="radio" value="unknown" name="isNecessary8"
+                                        checked>
+                                </div>
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label for="category8">What category is this expense?</label>
+                                        <select class="form-control" id="category8" name="category8">
+                                            <option>--</option>
+                                            <option>Housing and Transportation</option>
+                                            <option>Education or Professional</option>
+                                            <option>Food</option>
+                                            <option>Medical and Insurance</option>
+                                            <option>Entertainment</option>
+                                            <option>Investment and Debt Repayment</option>
+                                            <option>Household and Necessities</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-end">
+                                <div class="col"> <a
+                                        href="https://www.capitalone.com/support-center/credit-cards/report-fraud">I
+                                        don't recognize this payment.</a>
+                                </div>
+
+                                <div class="col">
+                                    <button onclick="document.getElementById('collapseBodyBill8').scrollIntoView(true);"
+                                        class="btn btn-primary" data-toggle="collapse" data-target="#collapseBodyBill9"
+                                        aria-expanded="true" type="button" style="float:right">
+                                        Looks good
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="amount8" value="345">
+
+                <div class="card" id="accordionCard9">
+                    <div class="card-header" id="collapseHeaderBill9">
+                        <h1 class="mb-0">
+                            <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                data-target="#collapseBodyBill9" aria-expanded="true" aria-controls="collapseBodyBill9">
+                                Expense paid to: Comcast
+                            </button>
+                        </h1>
+                    </div>
+                    <div id="collapseBodyBill9" class="collapse hidden" aria-labelledby="collapseHeaderBill9"
+                        data-parent="#inputAccordion">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <p>Payment amount: </p>
+                                    <p>$466</p>
+                                </div>
+                                <div class="col">
+                                    <p>Date:</p>
+                                    <p>1994-10-19</p>
+                                </div>
+                                <div class="col">
+                                    <p>Was this expense necessary?</p>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" value="true" name="isNecessary9"
+                                            id="necessaryTrue9">
+                                        <label class="form-check-label" for="necessaryTrue9">Yes</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" value="false" name="isNecessary9"
+                                            id="necessaryFalse9">
+                                        <label class="form-check-label for=" necessaryFalse9">No</input>
+                                    </div>
+                                    <input style="visibility: hidden;" type="radio" value="unknown" name="isNecessary9"
+                                        checked>
+                                </div>
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label for="category9">What category is this expense?</label>
+                                        <select class="form-control" id="category9" name="category9">
+                                            <option>--</option>
+                                            <option>Housing and Transportation</option>
+                                            <option>Education or Professional</option>
+                                            <option>Food</option>
+                                            <option>Medical and Insurance</option>
+                                            <option>Entertainment</option>
+                                            <option>Investment and Debt Repayment</option>
+                                            <option>Household and Necessities</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-end">
+                                <div class="col"> <a
+                                        href="https://www.capitalone.com/support-center/credit-cards/report-fraud">I
+                                        don't recognize this payment.</a>
+                                </div>
+
+                                <div class="col">
+                                    <button onclick="document.getElementById('collapseBodyBill9').scrollIntoView(true);"
+                                        class="btn btn-primary" data-toggle="collapse" data-target="#collapseBodyBill10"
+                                        aria-expanded="true" type="button" style="float:right">
+                                        Looks good
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="amount9" value="466">
+
+                <div class="card" id="accordionCard10">
+                    <div class="card-header" id="collapseHeaderBill10">
+                        <h1 class="mb-0">
+                            <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                data-target="#collapseBodyBill10" aria-expanded="true"
+                                aria-controls="collapseBodyBill10">
+                                Expense paid to: Cable
+                            </button>
+                        </h1>
+                    </div>
+                    <div id="collapseBodyBill10" class="collapse hidden" aria-labelledby="collapseHeaderBill10"
+                        data-parent="#inputAccordion">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <p>Payment amount: </p>
+                                    <p>$457</p>
+                                </div>
+                                <div class="col">
+                                    <p>Date:</p>
+                                    <p>2008-03-16</p>
+                                </div>
+                                <div class="col">
+                                    <p>Was this expense necessary?</p>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" value="true" name="isNecessary10"
+                                            id="necessaryTrue10">
+                                        <label class="form-check-label" for="necessaryTrue10">Yes</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" value="false" name="isNecessary10"
+                                            id="necessaryFalse10">
+                                        <label class="form-check-label for=" necessaryFalse10">No</input>
+                                    </div>
+                                    <input style="visibility: hidden;" type="radio" value="unknown" name="isNecessary10"
+                                        checked>
+                                </div>
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label for="category10">What category is this expense?</label>
+                                        <select class="form-control" id="category10" name="category10">
+                                            <option>--</option>
+                                            <option>Housing and Transportation</option>
+                                            <option>Education or Professional</option>
+                                            <option>Food</option>
+                                            <option>Medical and Insurance</option>
+                                            <option>Entertainment</option>
+                                            <option>Investment and Debt Repayment</option>
+                                            <option>Household and Necessities</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-end">
+                                <div class="col"> <a
+                                        href="https://www.capitalone.com/support-center/credit-cards/report-fraud">I
+                                        don't recognize this payment.</a>
+                                </div>
+
+                                <div class="col">
+                                    <button
+                                        onclick="document.getElementById('collapseBodyBill10').scrollIntoView(true);"
+                                        class="btn btn-primary" data-toggle="collapse" data-target="#collapseBodyBill11"
+                                        aria-expanded="true" type="button" style="float:right">
+                                        Looks good
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="amount10" value="457">
+
+                <div class="card" id="accordionCard11">
+                    <div class="card-header" id="collapseHeaderBill11">
+                        <h1 class="mb-0">
+                            <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                data-target="#collapseBodyBill11" aria-expanded="true"
+                                aria-controls="collapseBodyBill11">
+                                Expense paid to: Cable
+                            </button>
+                        </h1>
+                    </div>
+                    <div id="collapseBodyBill11" class="collapse hidden" aria-labelledby="collapseHeaderBill11"
+                        data-parent="#inputAccordion">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <p>Payment amount: </p>
+                                    <p>$319</p>
+                                </div>
+                                <div class="col">
+                                    <p>Date:</p>
+                                    <p>2015-12-20</p>
+                                </div>
+                                <div class="col">
+                                    <p>Was this expense necessary?</p>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" value="true" name="isNecessary11"
+                                            id="necessaryTrue11">
+                                        <label class="form-check-label" for="necessaryTrue11">Yes</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" value="false" name="isNecessary11"
+                                            id="necessaryFalse11">
+                                        <label class="form-check-label for=" necessaryFalse11">No</input>
+                                    </div>
+                                    <input style="visibility: hidden;" type="radio" value="unknown" name="isNecessary11"
+                                        checked>
+                                </div>
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label for="category11">What category is this expense?</label>
+                                        <select class="form-control" id="category11" name="category11">
+                                            <option>--</option>
+                                            <option>Housing and Transportation</option>
+                                            <option>Education or Professional</option>
+                                            <option>Food</option>
+                                            <option>Medical and Insurance</option>
+                                            <option>Entertainment</option>
+                                            <option>Investment and Debt Repayment</option>
+                                            <option>Household and Necessities</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-end">
+                                <div class="col"> <a
+                                        href="https://www.capitalone.com/support-center/credit-cards/report-fraud">I
+                                        don't recognize this payment.</a>
+                                </div>
+
+                                <div class="col">
+                                    <button
+                                        onclick="document.getElementById('collapseBodyBill11').scrollIntoView(true);"
+                                        class="btn btn-primary" data-toggle="collapse" data-target="#collapseBodyBill12"
+                                        aria-expanded="true" type="button" style="float:right">
+                                        Looks good
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="amount11" value="319">
+
+            </div>
+            <button type="submit" class="btn btn-block btn-primary">Let's analyze!</button>
+        </form>
+    </div>
+
+</body>
+<!-- Bootstrap JavaScript Bundle with Popper -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+</html>
+<!DOCTYPE html>
