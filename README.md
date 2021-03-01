@@ -2,6 +2,8 @@
 Americans aren't saving nearly as much as they should! This is partially because of our spending habits: many people aren't fully in control of their spending because they don't take the time to review their expenses. A web app that reminds users to review their expenses encourages reflection on spending, which will help people build and stick to their budget.
 ## What it does
 Using Capitol One's hackathon api, fetch expense history and ask the user to reflect on it necessity and categorization, helping the user reflect on their decisions. Using the user response, perform analysis on what can be improved about their spending habits based on generic rule-of-thumbs.
+
+You can try it out at https://eganj.github.io/HackUTD7Seas/- but note that this is a static version, so none of the data will update there's no connection between the inputted data and the analyzed data on the second page.
 ## How we built it
 Launched from a Node.js/Express server, this project currently runs as a webpage, but can easily be turned into a progressive web app. The server makes enterprise requests to Capitol One's Nessie api and uses that information to build the user expense profile.
 ## Challenges we ran into
